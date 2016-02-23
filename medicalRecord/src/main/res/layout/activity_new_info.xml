@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/navigator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView android:id="@+id/back_new_record_info"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/patient_info"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <ScrollView android:layout_below="@id/navigator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="基本信息"/>
+            <EditText android:id="@+id/name_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="姓名"/>
+            <EditText android:id="@+id/gender_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="性别"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:clickable="true"/>
+            <EditText android:id="@+id/birth_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:hint="出生年月"/>
+            <EditText android:id="@+id/age_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="年龄"
+                android:editable="false"/>
+            <EditText android:id="@+id/tel_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="手机号"/>
+            <EditText android:id="@+id/id_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="身份证号码"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="患者信息"/>
+            <EditText android:id="@+id/date_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="就诊日期"
+                android:editable="false"
+                android:focusableInTouchMode="false"/>
+            <EditText android:id="@+id/keshi_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="科室"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="编号信息1"/>
+            <Spinner android:id="@+id/num_type1_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="编号类型"/>
+            <EditText android:id="@+id/num1_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="编号"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="编号信息2"/>
+            <Spinner android:id="@+id/num_type2_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="编号类型"/>
+            <EditText android:id="@+id/num2_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="编号"/>
+            <!-- 使用开关按钮设置展开与收起 -->
+            <LinearLayout android:id="@+id/more_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="更多"/>
+                <EditText android:id="@+id/phone_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="固定电话"/>
+                <EditText android:id="@+id/email_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="电邮"/>
+                <EditText android:id="@+id/address_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="地址"/>
+                <EditText android:id="@+id/job_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="职业"/>
+                <EditText android:id="@+id/contact_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="联系人"/>
+                <EditText android:id="@+id/introduce_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="介绍人"/>
+                <EditText android:id="@+id/note_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="备注"/>
+
+            </LinearLayout>
+            <ToggleButton android:id="@+id/bt_more_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textOff="展开"
+                android:textOn="收起"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+    <Button android:id="@+id/save_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3f7"
+        android:text="@string/save"
+        android:layout_alignParentBottom="true"/>
+</LinearLayout>

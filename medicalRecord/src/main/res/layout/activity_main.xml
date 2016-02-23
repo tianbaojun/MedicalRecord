@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <!-- 病历标签的选择 -->
+        <Spinner android:id="@+id/label_record_list"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"/>
+        <TextView android:id="@+id/label_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="12sp"
+            android:layout_below="@id/label_record_list"
+            android:layout_centerHorizontal="true"/>
+        <SearchView android:id="@+id/search_record_list"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/background_light" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="#009988">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+            <!-- 40  80dp  -->
+            <Button android:id="@+id/bt_new_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/new_record"
+                android:layout_gravity="center"
+                android:maxLength="@android:integer/status_bar_notification_info_maxnum"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+            <!-- 40  40dp  -->
+            <Button android:id="@+id/camera"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/photo_record_list"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <ExpandableListView android:id="@+id/expand_record_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

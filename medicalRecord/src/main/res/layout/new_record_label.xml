@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/navigator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView android:id="@+id/back_new_record_label"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/cancel"
+            android:gravity="center"
+            android:background="#2f9"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <TextView android:id="@+id/choose_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="全部标签"
+        android:layout_below="@+id/navigator"/>
+    <ListView android:id="@+id/choose_label_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choose_label"/>
+    <Button android:id="@+id/save_label"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5f9"
+        android:text="@string/save"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MedicalRecord</string>
+    <string name="follow_up_visit">随访</string>
+    <string name="back"><![CDATA[&lt;]]></string>
+    <string name="new_record">新建病历</string>
+    <string name="option">···</string>
+    <string name="label">标签</string>
+    <string name="diagnosis">诊断</string>
+    <string name="states">病情</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="patient_info">患者信息</string>
+    <string name="gender_choose">请选择性别</string>
+    <string name="date_choose">请选择出生日期</string>
+    <string name="see_doctor_choose">请选择就诊日期</string>
+    <string name="add">添加</string>
+    <string-array name="labels">
+        <item name="label1">标签1</item>
+        <item name="label2">标签2</item>
+        <item name="label3">标签3</item>
+        <item name="label4">标签4</item>
+        <item name="label5">标签5</item>
+        <item name="label6">标签6</item>
+        <item name="label7">标签7</item>
+        <item name="label8">标签8</item>
+    </string-array>
+</resources>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/title">
+
+        <Button
+            android:id="@+id/back_new_record"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/title"
+            android:text="&lt;" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/new_record" />
+
+        <TextView
+            android:id="@+id/option_new_record"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/title"
+            android:gravity="center"
+            android:text="@string/option"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--               标签     -->
+            <LinearLayout android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="15dp"
+                    android:background="@color/title" />
+
+                <EditText android:id="@+id/label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="(未填写)"
+                    android:focusableInTouchMode="false"/>
+            </LinearLayout>
+            <!-- 患者信息 -->
+            <LinearLayout android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:clickable="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="15dp"
+                        android:background="@color/title" />
+
+                    <ToggleButton android:id="@+id/more_info"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/title"
+                        android:textOn="收起"
+                        android:textOff="详细"
+                        android:textSize="10sp"
+                        android:checked="false" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/name_new_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/gender_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="nan" />
+
+                    <TextView
+                        android:id="@+id/time_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="1tian" />
+
+                    <TextView
+                        android:id="@+id/label_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="label" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/date_new_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date:12,2,2" />
+
+                <TextView
+                    android:id="@+id/num1_new_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="病案号;12" />
+
+                <TextView
+                    android:id="@+id/num2_new_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="病案号;12" />
+
+                <TextView
+                    android:id="@+id/id_new_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证;121212121212112" />
+
+                <LinearLayout
+                    android:id="@+id/more_info_new_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/contect_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联系人：xxx" />
+
+                    <TextView
+                        android:id="@+id/tel_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号：12121212121" />
+
+                    <TextView
+                        android:id="@+id/phone_new_ord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电话：8789876" />
+
+                    <TextView
+                        android:id="@+id/email_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="邮箱;121212121212112" />
+
+                    <TextView
+                        android:id="@+id/job_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="职业：xxx" />
+
+                    <TextView
+                        android:id="@+id/introduce_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="介绍人：12121212121" />
+
+                    <TextView
+                        android:id="@+id/address_new_ord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="地址：8789876" />
+
+                    <TextView
+                        android:id="@+id/moreinfomation_new_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更多介绍信息;121212121212112" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- 诊断 -->
+            <LinearLayout android:id="@+id/diagnosis_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="15dp"
+                    android:background="@color/title" />
+
+                <EditText android:id="@+id/diagnosis_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="(未填写)"
+                    android:focusableInTouchMode="false"/>
+            </LinearLayout>
+            <!-- 病情信息 -->
+            <LinearLayout android:id="@+id/state_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="15dp"
+                    android:background="@color/title" />
+
+                <EditText android:id="@+id/state_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="(未填写)"
+                    android:focusableInTouchMode="false"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="bottom|center_horizontal"
+                android:text="无病程" />
+
+            <!--<ListView-->
+                <!--android:id="@+id/list_item_new_record"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+            <Button android:id="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查找"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
