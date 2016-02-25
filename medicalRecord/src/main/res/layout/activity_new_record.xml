@@ -38,7 +38,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,7 +84,7 @@
 
                     <ToggleButton android:id="@+id/more_info"
                         android:layout_width="40dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="20dp"
                         android:layout_alignParentRight="true"
                         android:background="@color/title"
                         android:textOn="收起"
@@ -128,25 +129,25 @@
                     android:id="@+id/date_new_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="date:12,2,2" />
+                    android:text="就诊时间" />
 
                 <TextView
                     android:id="@+id/num1_new_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="病案号;12" />
+                    android:hint="" />
 
                 <TextView
                     android:id="@+id/num2_new_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="病案号;12" />
+                    android:hint="病案号" />
 
                 <TextView
                     android:id="@+id/id_new_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="身份证;121212121212112" />
+                    android:hint="身份证" />
 
                 <LinearLayout
                     android:id="@+id/more_info_new_record"
@@ -164,44 +165,37 @@
                     <TextView
                         android:id="@+id/tel_new_record"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="手机号：12121212121" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/phone_new_ord"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="电话：8789876" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/email_new_record"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="邮箱;121212121212112" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/job_new_record"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="职业：xxx" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/introduce_new_record"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="介绍人：12121212121" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/address_new_ord"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="地址：8789876" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/moreinfomation_new_record"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="更多介绍信息;121212121212112" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -254,10 +248,14 @@
                 <!--android:id="@+id/list_item_new_record"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content" />-->
-            <Button android:id="@+id/btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="查找"/>
+
         </LinearLayout>
     </ScrollView>
+    <Button android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/title"
+        android:text="@string/save"
+        android:textSize="16sp"
+        android:layout_gravity="bottom"/>
 </LinearLayout>

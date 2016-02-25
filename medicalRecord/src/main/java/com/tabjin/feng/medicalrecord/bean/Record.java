@@ -7,8 +7,9 @@ import java.io.Serializable;
  */
 public class Record  implements Serializable {
 
-    private int id,patientId;
-    private String diagnosis,states,labels;
+    private int id = 0;
+    private String patientId = "";
+    private String diagnosis = "",states = "",labels = "";
 
     public int getId() {
         return id;
@@ -18,11 +19,11 @@ public class Record  implements Serializable {
         this.id = id;
     }
 
-    public int getPatientId() {
+    public String getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(String patientId) {
         this.patientId = patientId;
     }
 

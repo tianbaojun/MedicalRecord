@@ -58,7 +58,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <ExpandableListView android:id="@+id/expand_record_list"
+    <ListView android:id="@+id/record_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

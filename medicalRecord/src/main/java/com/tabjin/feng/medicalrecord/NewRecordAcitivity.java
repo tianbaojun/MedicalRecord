@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.lidroid.xutils.DbUtils;
-import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.exception.DbException;
 import com.tabjin.feng.medicalrecord.bean.Patient;
 import com.tabjin.feng.medicalrecord.bean.Record;
@@ -24,8 +22,6 @@ import java.util.List;
  */
 public class NewRecordAcitivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    DbUtils db ;
     private LinearLayout linearLayout;
     private ToggleButton toggleButton;
     private TextView name_new_record,gender_new_record,time_new_record,label_new_record
@@ -36,6 +32,7 @@ public class NewRecordAcitivity extends AppCompatActivity implements View.OnClic
     private Patient patient;
     static final int REQUESTCODE = 10;
     private final String SEPREATOR = ",";
+    private String from;
 
 
 
@@ -51,23 +48,22 @@ public class NewRecordAcitivity extends AppCompatActivity implements View.OnClic
 
     }
 
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        try {
-            db.save(record);
-        } catch (DbException e) {
-            e.printStackTrace();
+    /**
+     *list<String></String>转成String
+     * @param list list集合
+     * @return String
+     */
+    private String listToString(List<String> list) {
+        if(0!=list.size()){
+            StringBuilder sb = new StringBuilder();
+            for (String str : list) {
+                sb.append(str+SEPREATOR);
+            }
+            return sb.substring(0,sb.length()-1);
         }
+        return "";
     }
-private String listToString(List<String> list) {
-    StringBuilder sb = new StringBuilder();
-    for (String str : list) {
-        sb.append(str+SEPREATOR);
-    }
-    return sb.substring(0,sb.length()-1);
-}
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -79,12 +75,18 @@ private String listToString(List<String> list) {
 //                -----------------------    个人信息    --------------------------
                 case 20:
                     patient = (Patient) bundle.get("patient");
-                    try {
-                        db.save(patient);
-                    } catch (DbException e) {
-                        e.printStackTrace();
+                    if (null!=patient) {
+                        DbUtils db = DbUtils.create(NewRecordAcitivity.this,"MyRecord");
+                        try {
+                            db.saveOrUpdate(patient);
+                            record.setPatientId(patient.getId1());
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                        } finally {
+                            db.close();
+                        }
+                        setText(patient);
                     }
-                    setText();
                     break;
 //                ------------------------    标签     --------------------------
                 case NewLDSActivity.LABEL:
@@ -112,11 +114,11 @@ private String listToString(List<String> list) {
     /**
      * 为病人信息设置展示信息
      */
-    private void setText(){
+    private void setText(Patient patient){
         name_new_record.setText(patient.getName());
         gender_new_record.setText(patient.isGender()?"男":"女");
         date_new_record.setText(patient.getDate());
-        id_new_record.setText(patient.getId());
+        id_new_record.setText(patient.getId1());
         contect_new_record.setText(patient.getContacter());
         tel_new_record.setText(patient.getTel());
         email_new_record.setText(patient.getEmail());
@@ -155,9 +157,22 @@ private String listToString(List<String> list) {
         diagnosis_tv = (TextView) findViewById(R.id.diagnosis_tv);
         state_tv = (TextView) findViewById(R.id.state_tv);
 
-        db = DbUtils.create(this);
-
-        test();
+//        获取intent,判断是否从MainActivity传过来，如果是，就初始化信息,
+        Intent intent = getIntent();
+        from = intent.getStringExtra("from");
+        if((MainActivity.ID_MAIN).equals(from)){
+            Bundle bundle = intent.getExtras();
+            record = (Record) bundle.getSerializable("record");
+            patient = (Patient) bundle.getSerializable("patient");
+            if (null!=patient) {
+                setText(patient);
+            }
+            if (null!=record) {
+                label_tv.setText(record.getLabels());
+                diagnosis_tv.setText(record.getDiagnosis());
+                state_tv.setText(record.getStates());
+            }
+        }
 
     }
 
@@ -187,6 +202,8 @@ private String listToString(List<String> list) {
                 }
             }
         });
+//        保存键设置监听
+        findViewById(R.id.btn).setOnClickListener(this);
     }
 
     @Override
@@ -221,28 +238,30 @@ private String listToString(List<String> list) {
                 break;
 //            ---------------    病人基本信息    -----------------
             case R.id.info:
-                startActivityForResult(new Intent(this, NewInfoActivity.class), REQUESTCODE);
+                Intent intentInfo = new Intent(this, NewInfoActivity.class);
+                if (MainActivity.ID_MAIN.equals(from)) {
+                    intentInfo.putExtra("from", MainActivity.ID_MAIN);
+                    Bundle bundle = new Bundle();
+                    bundle .putSerializable("patient", patient);
+                    intentInfo.putExtras(bundle);
+                }
+                startActivityForResult(intentInfo, REQUESTCODE);
+                break;
+//                -----------------------    保存    --------------------
+            case R.id.btn:
+
+                DbUtils db = DbUtils.create(NewRecordAcitivity.this,"MyRecord");
+                try {
+                    db.saveOrUpdate(record);
+                } catch (DbException e) {
+                    e.printStackTrace();
+                } finally {
+                    db.close();
+                }
+                startActivity(new Intent(NewRecordAcitivity.this, MainActivity.class));
+                break;
+
         }
     }
 
-    /**
-     *  临时方法
-     *
-     */
-
-    private  void test(){
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Parent Parent = db.findFirst(Selector.from(Parent.class).where("name","=","test"));
-
-                try {
-                    Patient patient = db.findFirst(Selector.from(Patient.class).where("name","=","112233"));
-                    Toast.makeText(NewRecordAcitivity.this, ""+patient, Toast.LENGTH_SHORT).show();
-                } catch (DbException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 }

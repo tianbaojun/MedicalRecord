@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +24,7 @@ import java.util.Set;
  */
 public class NewLDSActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Map<String, Boolean> map = new HashMap<String, Boolean>();
+    private Map<String, Boolean> map = new HashMap<>();
     static ArrayList<String> labels=new ArrayList<>();
     static ArrayList<String> diagnosis=new ArrayList<>();
     static ArrayList<String> states=new ArrayList<>();
@@ -85,8 +84,14 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
         add_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItemSingle(diagnosis,edit_tv.getText().toString());
-                edit_tv.setText("");
+                String diagnosisStr = edit_tv.getText().toString();
+                if(diagnosisStr.trim().length()!=0) {
+                    addItemSingle(diagnosis, diagnosisStr);
+                    edit_tv.setText("");
+                }else{
+                    Toast.makeText(NewLDSActivity.this,"内容不能为空",Toast.LENGTH_SHORT).show();
+                    edit_tv.setText("");
+                }
                 //更新界面
                 adapter.notifyDataSetChanged();
             }
@@ -108,10 +113,18 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
         add_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItemSingle(states,edit_tv.getText().toString());
-                edit_tv.setText("");
+                String statesStr = edit_tv.getText().toString();
+                if(statesStr.trim().length()!=0) {
+                    addItemSingle(states, statesStr);
+                    edit_tv.setText("");
+                }else{
+                    Toast.makeText(NewLDSActivity.this,"内容不能为空",Toast.LENGTH_SHORT).show();
+                    edit_tv.setText("");
+                }
                 //更新界面
                 adapter.notifyDataSetChanged();
+
+
             }
         });
 
@@ -145,8 +158,14 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
         add_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItemSingle(labels,edit_tv.getText().toString());
-                edit_tv.setText("");
+                String labelsStr = edit_tv.getText().toString();
+                if(labelsStr.trim().length()!=0) {
+                    addItemSingle(labels, labelsStr);
+                    edit_tv.setText("");
+                }else{
+                    Toast.makeText(NewLDSActivity.this,"内容不能为空",Toast.LENGTH_SHORT).show();
+                    edit_tv.setText("");
+                }
                 //更新界面
                 adapter.notifyDataSetChanged();
             }
@@ -189,7 +208,7 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.save_bt:
                 switch (from) {
                     case LABEL:
-                        saveLabels();
+                        saveLabels(map);
                         break;
                     case DIAGNOSIS:
                         saveDiagnosis();
@@ -207,7 +226,7 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
     /**
      * 保存标签信息
       */
-    private void saveLabels() {
+    private void saveLabels(Map<String,Boolean> map) {
         ArrayList<String> list = new ArrayList<>();
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
@@ -243,9 +262,8 @@ public class NewLDSActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private <E> Boolean addItemSingle(List<E> list,E item){
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().equals(item)) {
+        for(E e:list){
+            if (e.equals(item)) {
                 return false;
             }
         }

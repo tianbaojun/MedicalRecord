@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.tabjin.feng.medicalrecord.bean.Patient;
@@ -38,9 +39,28 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
     private LinearLayout more_info;
     private Button save_info;
     private Calendar currentCalendar;
-//    private DbUtils db;
 
 
+    /**
+     * 为病人信息设置展示信息
+     */
+    private void setText(Patient patient){
+        name_info.setText(patient.getName());
+        gender_info.setText(patient.isGender()?"男":"女");
+        birth_info.setText(patient.getDate());
+        age_info.setText(String.valueOf(patient.getAge()));
+        date_info.setText(patient.getJiuZhen_date());
+        id_info.setText(patient.getId1());
+        contact_info.setText(patient.getContacter());
+        tel_info.setText(patient.getMobil());
+        email_info.setText(patient.getEmail());
+        job_info.setText(patient.getJob());
+        introduce_info.setText(patient.getInterducer());
+        address_info.setText(patient.getAddress());
+        note_info.setText(patient.getNote());
+        phone_info.setText(patient.getTel());
+
+    }
 
 
     //    编号类型，可使用枚举类来实现
@@ -86,6 +106,18 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
 
         currentCalendar = Calendar.getInstance();
 
+        Intent intent = getIntent();
+        String from = intent.getStringExtra("from");
+        if((MainActivity.ID_MAIN).equals(from)){
+            Bundle bundle = intent.getExtras();
+            patient = (Patient) bundle.getSerializable("patient");
+            if (null!=patient) {
+                Toast.makeText(this,"patient不为null",Toast.LENGTH_SHORT).show();
+
+                setText(patient);
+            }
+        }
+
 
 //        db = DbUtils.create(this);
 //        希望通过这样的方法实现builder的复用，这样可以节省内存，
@@ -117,12 +149,10 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
         bt_more_info.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     more_info.setVisibility(View.VISIBLE);
-                    isChecked = true;
-                }else{
+                } else {
                     more_info.setVisibility(View.GONE);
-                    isChecked = false;
                 }
             }
         });
@@ -138,7 +168,7 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
         patient.setContacter(contact_info.getText().toString());
         patient.setDate(birth_info.getText().toString());
         patient.setEmail(email_info.getText().toString());
-        patient.setId(id_info.getText().toString());
+        patient.setId1(id_info.getText().toString());
         patient.setInterducer(introduce_info.getText().toString());
         patient.setJiuZhen_date(date_info.getText().toString());
         patient.setJob(job_info.getText().toString());
@@ -219,7 +249,7 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
 
     /**
      * --------------   显示日期选择对话框   ----------------
-     * @return 返回选择的日期
+     *
      */
     private void showDatePicker(final EditText date_info,final EditText age_info) {
         final Calendar DATE = Calendar.getInstance();
@@ -258,5 +288,8 @@ public class NewInfoActivity extends AppCompatActivity implements View.OnClickLi
                 .setNegativeButton("取消", null);
         builder.create().show();
     }
+
+
+
 
 }

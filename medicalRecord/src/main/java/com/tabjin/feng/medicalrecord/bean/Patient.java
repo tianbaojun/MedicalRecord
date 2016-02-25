@@ -20,6 +20,15 @@ public class Patient implements Serializable{
     private String bianHao_type;
     private String biaoHao;
     private String Tel,email,address,job,contacter,interducer,note;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -60,16 +69,12 @@ public class Patient implements Serializable{
         this.mobil = mobil;
     }
 
-    public String getId() {
+    public String getId1() {
         return id1;
     }
 
-    public void setId(String id) {
-        this.id1 = id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setId1(String id1) {
+        this.id1 = id1;
     }
 
     public String getJiuZhen_date() {
@@ -159,7 +164,6 @@ public class Patient implements Serializable{
     public void setNote(String note) {
         this.note = note;
     }
-
 
     @Override
     public String toString() {
